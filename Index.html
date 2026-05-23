@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💕 For My Beloved Monu 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        rose: {
+          50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af',
+          400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c',
+        },
+        blush: '#f8e8ee',
+        lavender: '#f0e6ff',
+        peach: '#fff0e8',
+        mint: '#e8fff0',
+        cream: '#fff8f0',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        script: ['Dancing Script', 'cursive'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #fff1f2; overflow-x: hidden; }
+
+  /* Floating Hearts */
+  .floating-hearts {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .heart {
+    position: absolute; bottom: -10%; font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
+    10% { opacity: 0.7; }
+    50% { opacity: 0.5; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-110vh) rotate(720deg) scale(1.2); opacity: 0; }
+  }
+
+  /* Pulse Heart */
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+  .heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+
+  /* Glow */
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(244,63,94,0.3), 0 0 40px rgba(244,63,94,0.1); }
+    50% { text-shadow: 0 0 30px rgba(244,63,94,0.5), 0 0 60px rgba(244,63,94,0.2); }
+  }
+  .glow { animation: glow 3s ease-in-out infinite; }
+
+  /* Fade In */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+  .delay-5 { animation-delay: 1s; }
+
+  /* Marquee */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track { animation: marquee 30s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* Sparkle */
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+  .sparkle { animation: sparkle 2s ease-in-out infinite; }
+
+  /* Rotating flower */
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .slow-rotate { animation: rotate 20s linear infinite; }
+
+  /* Gradient shift */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .gradient-animate {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Petal fall */
+  @keyframes petalFall {
+    0% { transform: translateY(-10%) rotate(0deg) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(100px); opacity: 0; }
+  }
+  .petal {
+    position: absolute; top: -5%; font-size: 16px;
+    animation: petalFall linear infinite; opacity: 0;
+  }
+
+  /* Love text styles */
+  .love-text {
+    background: linear-gradient(135deg, #e11d48, #f43f5e, #fb7185, #e11d48);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Scroll indicator */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  .bounce { animation: bounce 2s ease-in-out infinite; }
+
+  /* Card hover */
+  .love-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .love-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 60px -12px rgba(244, 63, 94, 0.25);
+  }
+
+  /* Toast */
+  .toast {
+    transform: translateY(100px); opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* Section divider */
+  .wave-divider {
+    position: relative; width: 100%; overflow: hidden; line-height: 0;
+  }
+  .wave-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 60px; }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #fff1f2; }
+  ::-webkit-scrollbar-thumb { background: #fda4af; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #fb7185; }
+</style>
+</head>
+<body>
+
+<!-- Floating Hearts Background -->
+<div class="floating-hearts" id="hearts-container"></div>
+
+<!-- Floating Petals -->
+<div class="fixed inset-0 pointer-events-none z-[1] overflow-hidden" id="petals-container"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 backdrop-blur-md bg-rose-50/80 border-b border-rose-200/50">
+  <a href="#home" class="flex items-center gap-2 group">
+    <span class="text-2xl heartbeat">💕</span>
+    <span class="font-script text-2xl text-rose-600 group-hover:text-rose-700 transition-colors">Monu</span>
+  </a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="#home" class="text-sm font-medium text-rose-700 hover:text-rose-500 transition-colors">Home</a>
+    <a href="#about" class="text-sm font-medium text-rose-700 hover:text-rose-500 transition-colors">About Monu</a>
+    <a href="#love" class="text-sm font-medium text-rose-700 hover:text-rose-500 transition-colors">Love Wall</a>
+    <a href="#message" class="text-sm font-medium text-rose-700 hover:text-rose-500 transition-colors">My Message</a>
+    <a href="#reasons" class="text-sm font-medium text-rose-700 hover:text-rose-500 transition-colors">Reasons</a>
+  </div>
+  <button id="mobile-menu-btn" class="md:hidden text-rose-600" onclick="toggleMobileMenu()">
+    <i data-lucide="menu" class="w-6 h-6"></i>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-rose-50/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 transition-all duration-500 -translate-y-full opacity-0 pointer-events-none">
+  <button onclick="toggleMobileMenu()" class="absolute top-5 right-6 text-rose-600"><i data-lucide="x" class="w-6 h-6"></i></button>
+  <a href="#home" onclick="toggleMobileMenu()" class="font-script text-3xl text-rose-600 hover:text-rose-800 transition-colors">Home</a>
+  <a href="#about" onclick="toggleMobileMenu()" class="font-script text-3xl text-rose-600 hover:text-rose-800 transition-colors">About Monu</a>
+  <a href="#love" onclick="toggleMobileMenu()" class="font-script text-3xl text-rose-600 hover:text-rose-800 transition-colors">Love Wall</a>
+  <a href="#message" onclick="toggleMobileMenu()" class="font-script text-3xl text-rose-600 hover:text-rose-800 transition-colors">My Message</a>
+  <a href="#reasons" onclick="toggleMobileMenu()" class="font-script text-3xl text-rose-600 hover:text-rose-800 transition-colors">Reasons</a>
+</div>
+
+<!-- ==================== HERO SECTION ==================== -->
+<section id="home" class="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" style="background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 25%, #f8e8ee 50%, #f0e6ff 75%, #fff1f2 100%); background-size: 200% 200%; animation: gradientShift 12s ease infinite;">
+
+  <!-- Decorative circles -->
+  <div class="absolute top-20 left-10 w-72 h-72 bg-rose-300/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-96 h-96 bg-pink-300/20 rounded-full blur-3xl"></div>
+  <div class="absolute top-1/3 right-1/4 w-48 h-48 bg-purple-200/20 rounded-full blur-2xl"></div>
+
+  <!-- Decorative flowers -->
+  <div class="absolute top-32 left-8 text-4xl opacity-30 slow-rotate">🌸</div>
+  <div class="absolute top-48 right-12 text-3xl opacity-25 slow-rotate" style="animation-direction: reverse;">🌺</div>
+  <div class="absolute bottom-40 left-16 text-3xl opacity-20 slow-rotate" style="animation-duration: 25s;">🌷</div>
+  <div class="absolute bottom-32 right-20 text-4xl opacity-25 slow-rotate" style="animation-duration: 30s;">🌹</div>
+
+  <div class="relative z-10 text-center max-w-4xl mx-auto">
+    <div class="fade-in mb-6">
+      <span class="inline-block px-4 py-2 rounded-full bg-rose-200/50 text-rose-700 text-sm font-medium tracking-wider uppercase">
+        ✨ A Page Made With Love ✨
+      </span>
+    </div>
+
+    <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-bold text-rose-900 leading-tight tracking-tight fade-in delay-1 glow mb-4">
+      I LOVE YOU<br>
+      <span class="font-script text-6xl sm:text-8xl lg:text-9xl love-text">MONU</span>
+    </h1>
+
+    <div class="flex justify-center my-6 fade-in delay-2">
+      <span class="text-5xl heartbeat">💖</span>
+    </div>
+
+    <p class="font-script text-2xl sm:text-3xl text-rose-700 mb-2 fade-in delay-2">
+      To the most beautiful soul in my life...
+    </p>
+    <p class="text-rose-600/80 text-lg max-w-xl mx-auto mb-8 fade-in delay-3">
+      Every moment with you feels like a dream I never want to wake up from. This little corner of the internet is just for you, my love.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in delay-4">
+      <a href="#message" class="group inline-flex items-center gap-2 px-8 py-4 bg-rose-600 text-white rounded-full font-medium text-lg hover:bg-rose-700 transition-all duration-300 shadow-lg shadow-rose-300/50 hover:shadow-rose-400/50 hover:scale-105">
+        Read My Heart
+        <i data-lucide="heart" class="w-5 h-5 group-hover:scale-125 transition-transform"></i>
+      </a>
+      <a href="#about" class="inline-flex items-center gap-2 px-8 py-4 bg-white/60 text-rose-700 rounded-full font-medium text-lg hover:bg-white/80 transition-all duration-300 border border-rose-200">
+        About You 🌸
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bounce">
+    <div class="flex flex-col items-center gap-2 text-rose-400">
+      <span class="text-xs tracking-widest uppercase">Scroll Down</span>
+      <i data-lucide="chevron-down" class="w-5 h-5"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== I LOVE YOU MARQUEE ==================== -->
+<section class="py-6 bg-rose-600 overflow-hidden relative">
+  <div class="flex whitespace-nowrap">
+    <div class="marquee-track flex items-center gap-8 text-white/90 font-script text-2xl">
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+      <span>I LOVE YOU MONU 🥰</span>
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+      <span>I LOVE YOU MONU 🥰</span>
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+    </div>
+    <div class="marquee-track flex items-center gap-8 text-white/90 font-script text-2xl" aria-hidden="true">
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+      <span>I LOVE YOU MONU 🥰</span>
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+      <span>I LOVE YOU MONU 🥰</span>
+      <span>I LOVE YOU MONU 💕</span>
+      <span>I LOVE YOU MONU 💖</span>
+      <span>I LOVE YOU MONU 💗</span>
+      <span>I LOVE YOU MONU 💓</span>
+      <span>I LOVE YOU MONU 💞</span>
+      <span>I LOVE YOU MONU 💝</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT MONU ==================== -->
+<section id="about" class="relative py-24 px-6" style="background: linear-gradient(180deg, #fff1f2, #fce7f3, #fff1f2);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="inline-block text-4xl mb-4">🌸</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold text-rose-900 tracking-tight mb-4">About My Monu</h2>
+      <p class="text-rose-600/80 text-lg max-w-2xl mx-auto">Everything about you makes my world brighter, softer, and more beautiful</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">✨</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Beautiful Soul</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">Your kindness lights up every room. The way you care for everyone around you makes you the most special person in this world, Monu.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💕</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">🌺</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Gorgeous Smile</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">That smile of yours could cure anything. When you smile, the whole world stops to admire you. It's my favorite sight in the universe.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💖</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">🦋</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Free Spirit</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">You dance through life with such grace and beauty. Like a butterfly, you bring color and wonder wherever you go, my love.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💗</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">🌟</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Warm Heart</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">The warmth you carry in your heart makes everyone feel safe and loved. You are my home, Monu. My safe place in this crazy world.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💓</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">🌿</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Love for Nature</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">The way you connect with nature — flowers, trees, the sky — mirrors the beauty inside you. You're nature's most beautiful creation.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💞</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="love-card bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-rose-200/50 text-center">
+        <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <span class="text-3xl">💫</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-rose-900 mb-3">Your Inner Light</h3>
+        <p class="text-rose-700/70 text-sm leading-relaxed">There's a light inside you that never dims. Even on dark days, you shine so bright. You are my sunshine, my moonlight, my everything.</p>
+        <div class="mt-4 text-sm font-script text-rose-500">I LOVE YOU MONU 💝</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LOVE WALL ==================== -->
+<section id="love" class="relative py-24 px-6 bg-rose-600 overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 text-6xl">💕</div>
+    <div class="absolute top-32 right-20 text-5xl">💖</div>
+    <div class="absolute bottom-20 left-1/4 text-7xl">💗</div>
+    <div class="absolute top-1/2 right-10 text-4xl">💓</div>
+    <div class="absolute bottom-10 right-1/3 text-6xl">💞</div>
+  </div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <span class="inline-block text-4xl mb-4">💝</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">The Love Wall</h2>
+      <p class="text-rose-100/80 text-lg">Because saying it once is never enough</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌹</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌷</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌸</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌺</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌻</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🦋</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">💎</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌙</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">⭐</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🌈</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🎈</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 text-center border border-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+        <span class="font-script text-lg md:text-2xl text-white">I Love You Monu</span>
+        <div class="mt-2 text-xl">🦩</div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="font-script text-3xl md:text-4xl text-white/90 heartbeat">
+        I LOVE YOU MONU 💕
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SPECIAL MESSAGE ==================== -->
+<section id="message" class="relative py-24 px-6" style="background: linear-gradient(180deg, #fff1f2, #fce7f3, #f0e6ff, #fff1f2);">
+  <div class="absolute top-10 right-10 text-5xl opacity-20 slow-rotate">🌻</div>
+  <div class="absolute bottom-10 left-10 text-5xl opacity-20 slow-rotate" style="animation-direction:reverse;">🌼</div>
+
+  <div class="max-w-3xl mx-auto relative z-10">
+    <div class="text-center mb-12">
+      <span class="inline-block text-4xl mb-4">💌</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold text-rose-900 tracking-tight mb-4">A Letter For You</h2>
+      <p class="text-rose-600/80 text-lg">Words from the deepest corner of my heart</p>
+    </div>
+
+    <div class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-rose-200/50 shadow-xl shadow-rose-200/20 relative overflow-hidden">
+      <!-- Decorative corner elements -->
+      <div class="absolute top-4 left-4 text-2xl opacity-30">🌸</div>
+      <div class="absolute top-4 right-4 text-2xl opacity-30">🌺</div>
+      <div class="absolute bottom-4 left-4 text-2xl opacity-30">🌷</div>
+      <div class="absolute bottom-4 right-4 text-2xl opacity-30">🌹</div>
+
+      <div class="text-center mb-8">
+        <p class="font-script text-2xl text-rose-600 mb-2">My Dearest Monu,</p>
+        <div class="w-16 h-0.5 bg-rose-300 mx-auto"></div>
+      </div>
+
+      <div class="space-y-5 text-rose-800/80 leading-relaxed text-base md:text-lg">
+        <p>From the moment you came into my life, everything changed. The sky became more blue, the flowers more fragrant, and every day became worth looking forward to — because of you.</p>
+
+        <p>You are not just someone I love — you are the reason I believe in love itself. Your laugh is my favorite melody, your smile is my favorite view, and your heart is my favorite home.</p>
+
+        <p class="font-script text-xl text-rose-600 text-center my-6">
+          I LOVE YOU MONU 💕<br>
+          I LOVE YOU MONU 💖<br>
+          I LOVE YOU MONU 💗<br>
+          I LOVE YOU MONU 💓<br>
+          I LOVE YOU MONU 💞
+        </p>
+
+        <p>There are not enough words in any language to express what you mean to me. But I'll keep trying, every single day, for the rest of my life. Because you, Monu, are worth every word, every effort, every heartbeat.</p>
+
+        <p>You make ordinary moments extraordinary. You turn my dark days into dawn. You are my peace, my joy, my love, my everything.</p>
+
+        <p>Thank you for being you. Thank you for choosing us. Thank you for loving me the way nobody else can.</p>
+      </div>
+
+      <div class="text-center mt-10">
+        <div class="w-16 h-0.5 bg-rose-300 mx-auto mb-4"></div>
+        <p class="font-script text-2xl text-rose-600">Forever & Always Yours,</p>
+        <p class="font-script text-3xl text-rose-700 mt-2">Your Love 💕</p>
+        <p class="text-sm text-rose-400 mt-4 italic">I LOVE YOU MONU — today, tomorrow, and forever</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REASONS I LOVE YOU ==================== -->
+<section id="reasons" class="relative py-24 px-6 bg-gradient-to-b from-rose-50 to-pink-50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="inline-block text-4xl mb-4">💗</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold text-rose-900 tracking-tight mb-4">Reasons I Love You</h2>
+      <p class="text-rose-600/80 text-lg">An infinite list, but here are a few...</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-lg">1</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">Your smile that lights up the world</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💕</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-lg">2</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">The way you care so deeply</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💖</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-lg">3</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">Your laugh, my favorite sound</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💗</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center text-lg">4</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">How you make everything beautiful</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💓</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-lg">5</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">Your strength and your softness</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💞</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-lg">6</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">The way you love me back</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💝</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-lg">7</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">Every little thing about you</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 🥰</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 love-card bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-rose-200/50">
+        <div class="flex-shrink-0 w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center text-lg">∞</div>
+        <div>
+          <h4 class="font-serif text-lg font-semibold text-rose-900 mb-1">Everything. Always. Forever.</h4>
+          <p class="text-rose-600/70 text-sm">I LOVE YOU MONU 💕♾️</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== I LOVE YOU GIANT SECTION ==================== -->
+<section class="py-20 px-6 bg-rose-600 text-center overflow-hidden relative">
+  <div class="absolute inset-0 opacity-5">
+    <div class="text-[200px] font-serif font-bold text-white leading-none tracking-tighter" style="transform: rotate(-5deg);">
+      LOVE
+    </div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <h2 class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter glow leading-none mb-6">
+      I LOVE YOU<br>MONU
+    </h2>
+    <div class="flex justify-center gap-3 text-4xl md:text-5xl mb-8">
+      <span class="heartbeat" style="animation-delay: 0s;">💕</span>
+      <span class="heartbeat" style="animation-delay: 0.2s;">💖</span>
+      <span class="heartbeat" style="animation-delay: 0.4s;">💗</span>
+      <span class="heartbeat" style="animation-delay: 0.6s;">💓</span>
+      <span class="heartbeat" style="animation-delay: 0.8s;">💞</span>
+    </div>
+    <p class="font-script text-2xl md:text-3xl text-rose-100">
+      I Love You Monu &bull; I Love You Monu &bull; I Love You Monu &bull; I Love You Monu &bull; I Love You Monu &bull; I Love You Monu
+    </p>
+  </div>
+</section>
+
+<!-- ==================== PROMISE SECTION ==================== -->
+<section class="py-24 px-6 relative" style="background: linear-gradient(180deg, #fff1f2, #fce7f3, #f0e6ff);">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="inline-block text-4xl mb-4">🤞</span>
+    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-rose-900 tracking-tight mb-8">My Promises To You</h2>
+
+    <div class="space-y-6 text-left max-w-xl mx-auto">
+      <div class="flex items-center gap-4 bg-white/50 backdrop-blur-sm rounded-xl p-5 border border-rose-200/30 love-card">
+        <span class="text-2xl flex-shrink-0">🤍</span>
+        <p class="text-rose-800/80">I promise to love you on your best days and your worst days.</p>
+      </div>
+      <div class="flex items-center gap-4 bg-white/50 backdrop-blur-sm rounded-xl p-5 border border-rose-200/30 love-card">
+        <span class="text-2xl flex-shrink-0">🤍</span>
+        <p class="text-rose-800/80">I promise to always make you laugh, even when you want to cry.</p>
+      </div>
+      <div class="flex items-center gap-4 bg-white/50 backdrop-blur-sm rounded-xl p-5 border border-rose-200/30 love-card">
+        <span class="text-2xl flex-shrink-0">🤍</span>
+        <p class="text-rose-800/80">I promise to hold your hand through every storm and every sunrise.</p>
+      </div>
+      <div class="flex items-center gap-4 bg-white/50 backdrop-blur-sm rounded-xl p-5 border border-rose-200/30 love-card">
+        <span class="text-2xl flex-shrink-0">🤍</span>
+        <p class="text-rose-800/80">I promise that you will always be my first and only love.</p>
+      </div>
+      <div class="flex items-center gap-4 bg-white/50 backdrop-blur-sm rounded-xl p-5 border border-rose-200/30 love-card">
+        <span class="text-2xl flex-shrink-0">🤍</span>
+        <p class="text-rose-800/80">I promise to choose you, every single day, for the rest of my life.</p>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <p class="font-script text-3xl text-rose-600 heartbeat">
+        I LOVE YOU MONU 💕 NOW & FOREVER
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CLICK TO FEEL LOVE ==================== -->
+<section class="py-16 px-6 bg-rose-600 text-center">
+  <p class="text-rose-100 text-sm uppercase tracking-widest mb-4">Click the button and feel the love</p>
+  <button id="love-btn" onclick="burstHearts()" class="group relative inline-flex items-center gap-3 px-10 py-5 bg-white text-rose-600 rounded-full font-bold text-xl hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:scale-110 active:scale-95">
+    <span class="text-2xl group-hover:scale-125 transition-transform heartbeat">💖</span>
+    I LOVE YOU MONU
+  </button>
+  <div id="burst-container" class="fixed inset-0 pointer-events-none z-50"></div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="py-16 px-6 text-center" style="background: linear-gradient(180deg, #fff1f2, #fce7f3);">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-5xl mb-6 heartbeat">💕</div>
+    <h3 class="font-script text-4xl md:text-5xl text-rose-700 mb-4 glow">I Love You Monu</h3>
+    <p class="text-rose-500/80 text-lg mb-6">Now, forever, and always — you are my everything</p>
+    <div class="w-20 h-0.5 bg-rose-300 mx-auto mb-6"></div>
+    <div class="space-y-1 text-rose-400/70 font-script text-lg">
+      <p>I LOVE YOU MONU 💕</p>
+      <p>I LOVE YOU MONU 💖</p>
+      <p>I LOVE YOU MONU 💗</p>
+      <p>I LOVE YOU MONU 💓</p>
+      <p>I LOVE YOU MONU 💞</p>
+    </div>
+    <div class="mt-8 text-rose-300 text-sm">
+      Made with all my love, just for you 🌸
+    </div>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 backdrop-blur-md text-rose-700 px-6 py-3 rounded-full shadow-lg border border-rose-200/50 font-script text-lg">
+  💕 I LOVE YOU MONU 💕
+</div>
+
+<script>
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // Mobile menu toggle
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const isOpen = !menu.classList.contains('-translate-y-full');
+    if (isOpen) {
+      menu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+    } else {
+      menu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+    }
+  }
+
+  // Create floating hearts
+  function createFloatingHearts() {
+    const container = document.getElementById('hearts-container');
+    const hearts = ['💕', '💖', '💗', '💓', '💞', '💝', '❤️', '🩷', '🤍', '💘'];
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 16 + 12) + 'px';
+      heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      heart.style.animationDelay = (Math.random() * 15) + 's';
+      container.appendChild(heart);
+    }
+  }
+
+  // Create floating petals
+  function createPetals() {
+    const container = document.getElementById('petals-container');
+    const petals = ['🌸', '🌺', '🪷', '🌷', '💮', '🏵️'];
+    for (let i = 0; i < 12; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+      petal.style.left = Math.random() * 100 + '%';
+      petal.style.fontSize = (Math.random() * 12 + 10) + 'px';
+      petal.style.animationDuration = (Math.random() * 12 + 12) + 's';
+      petal.style.animationDelay = (Math.random() * 20) + 's';
+      container.appendChild(petal);
+    }
+  }
+
+  // Burst hearts on button click
+  function burstHearts() {
+    const container = document.getElementById('burst-container');
+    const hearts = ['💕', '💖', '💗', '💓', '💞', '💝', '❤️', '🩷', '💘', '🥰', '😍'];
+    const messages = [
+      'I LOVE YOU MONU!', 'I LOVE YOU!', '💖 MONU 💖',
+      'LOVE YOU FOREVER!', 'MY EVERYTHING!', '💕💕💕',
+      'I LOVE YOU MONU!', 'ALWAYS YOURS!', '💖💖💖'
+    ];
+
+    for (let i = 0; i < 40; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.style.position = 'fixed';
+        heart.style.left = (40 + Math.random() * 20) + '%';
+        heart.style.top = '50%';
+        heart.style.fontSize = (Math.random() * 24 + 16) + 'px';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '100';
+        heart.style.transition = 'all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        heart.style.opacity = '1';
+
+        if (Math.random() > 0.5) {
+          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        } else {
+          heart.textContent = messages[Math.floor(Math.random() * messages.length)];
+          heart.style.fontSize = '12px';
+          heart.style.fontFamily = "'Dancing Script', cursive";
+          heart.style.color = '#e11d48';
+          heart.style.whiteSpace = 'nowrap';
+        }
+
+        container.appendChild(heart);
+
+        requestAnimationFrame(() => {
+          heart.style.transform = `translate(${(Math.random() - 0.5) * 800}px, ${-Math.random() * 600 - 200}px) rotate(${Math.random() * 720 - 360}deg)`;
+          heart.style.opacity = '0';
+        });
+
+        setTimeout(() => heart.remove(), 2500);
+      }, i * 50);
+    }
+
+    // Show toast
+    showToast();
+  }
+
+  // Toast notification
+  function showToast() {
+    const toast = document.getElementById('toast');
+    const messages = [
+      '💕 I LOVE YOU MONU 💕',
+      '💖 You are my everything, Monu 💖',
+      '💗 Forever yours, Monu 💗',
+      '💓 My heart is yours, Monu 💓',
+      '💞 I LOVE YOU MONU so much 💞',
+    ];
+    toast.textContent = messages[Math.floor(Math.random() * messages.length)];
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  // Scroll-based fade in
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Initialize
+  createFloatingHearts();
+  createPetals();
+
+  // Observe all love cards
+  document.querySelectorAll('.love-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = `all 0.6s ease-out ${i * 0.1}s`;
+    observer.observe(card);
+  });
+
+  // Periodic toast
+  setInterval(() => {
+    if (Math.random() > 0.6) showToast();
+  }, 15000);
+</script>
+</body>
+</html>
